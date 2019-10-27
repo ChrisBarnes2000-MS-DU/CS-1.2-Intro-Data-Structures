@@ -1,5 +1,5 @@
-#import dictionary_words
 from collections import Counter
+import dictionary_words
 import rearrange
 import random
 import sys
@@ -14,20 +14,27 @@ def anagram(params):
 def check_anagram(input1, input2):
     return Counter(input1) == Counter(input2)
 
-def terminal_input():
-    if len(sys.argv) != 2:
-        print("Try again with 1 argument: he number of words to give!")
-    else:
+def main():
+    if len(sys.argv) == 2:
+        #Open dictionary/words file list to check if word is real before making anagram
+        words_list = dictionary_words.get_file_line("/usr/share/dict/words")
+        #Get the word via the terminal input
         word = sys.argv[1]
-        # turns the word string into a list stored in the variable name letter_list
-        letter_list = list(word)
         print(word)
-        ang_word = ''.join(anagram(letter_list))
-        print(ang_word)
+        #Check if word is in the dictionary/words file
+        for list_word in words_list:
+            if list_word == word:
+                #Turn the word string into a list
+                letter_list = list(word)
+                #Create the anagram of the word as a list
+                ang_word = ''.join(anagram(letter_list))
+                print(ang_word)
         if check_anagram(word, ang_word):
-            print("These are anagrams!!")
+                print("These are anagrams!!")
         else:
             print("They are not anagrams :(")
+    else:
+        print("Try again with 1 argument: he number of words to give!")
 
 if __name__ == "__main__":
-    terminal_input()
+    main()
