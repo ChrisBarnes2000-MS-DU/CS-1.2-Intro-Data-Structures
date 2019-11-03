@@ -1,5 +1,6 @@
+from flask import Flask, request, render_template
 import histogram
-from flask import Flask
+import os
 
 app = Flask(__name__)
 
@@ -9,5 +10,7 @@ histogram_list = histogram.dictionary_histogram("fish.txt")
 @app.route('/')
 def index():
     word = histogram.get_word_by_freq(histogram_list)
-    return word # histogram_list
-    #print("**__ORIGINAL_HISTOGRAM__**\n", histogram)
+    return render_template('index.html', word=word, histogram=histogram_list)
+
+if __name__ == '__main__':
+  app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000), debug=True)
