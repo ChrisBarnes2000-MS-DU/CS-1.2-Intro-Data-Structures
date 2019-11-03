@@ -32,20 +32,8 @@ def get_clean_words(file_name):
 
     return clean_words_as_str
 
-def get_file_line(filename):
-    #open the given file to read
-    file = open(filename, 'r')
-    #pull out all lines as written in the file
-    all_lines = file.readlines()
-    #clean up the list of words obtained
-    all_lines = [line.strip() for line in all_lines]
-    #Close the file to save space/run time
-    file.close()
-    #return cleaned up list 
-    return all_lines
-
 def get_random_word(num):
-    words_list = get_file_line("/usr/share/dict/words")
+    words_list = get_clean_words("/usr/share/dict/words")
     word = words_list[random.randint(0, len(words_list)-1)]
     return word
 
