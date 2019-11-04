@@ -41,7 +41,7 @@ def make_sentence():
     sentence = ""
     for i in range(0, num):
         word = get_random_word(num)
-        print(i+1, word)
+        #print(i+1, word)
         if i == 0:
             sentence = word.capitalize()
         elif i != num - 1:
@@ -51,7 +51,7 @@ def make_sentence():
             sentence += random.choice(punctuation)
 
     #output your sentence
-    print(sentence + "\t: " + str(num) + " words")
+    #print(sentence + "\t: " + str(num) + " words")
 
 if __name__ == "__main__":
     #The program only accepts one argument: the number of words to be selected.
