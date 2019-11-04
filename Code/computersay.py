@@ -1,4 +1,4 @@
-String = r"""
+computer = r"""
              ________________________________________________  
             /                                                \ 
            |    _________________________________________     |
@@ -33,47 +33,36 @@ String = r"""
 
 def print_computer(content):
    content_len = len(content.split()) + 5
-   print(content_len-5, content)
+   # print(content_len-5, content)
    outter_tabs = 2
-   inner_tabs = 4
    total_len = 72
-   
-   
-   line_test = ""
-   for i in range(total_len-1):
-      if i == 66:
-         line_test += "|"
-      else:
-         line_test += "-"
-   line_test += "|"
 
-   
-   for i, line in enumerate(String.splitlines()):
-      total_tabs = total_len / 8
-      #Top display of computer
+   for i, line in enumerate(computer.splitlines()):
+      content_str = ""
+      # Top display of computer
       if i <= 5:
          print(i, "\t", line)
-      #Content of computer
-      elif i > 5 and i <= content_len:
-         print(line_test, "   72")
-         string = ""
-         #print left side
-         for tab in range(outter_tabs):
-            string += "\t"
-            total_tabs -= 1
-         string += "    |   |\t"
-         #print content
-         string += "{} {}".format(i, content)
-         #print right side
-         if len(string) < total_len:
-            for tab in range(inner_tabs):
-               string += "\t"
+      # Content of computer
+      if i > 5 and i <= 16:
+         for j in range(outter_tabs):
+            content_str += "\t"
+         content_str += "    |   |\t{}".format(content)
+         if len(content_str) < total_len:
+            total_tabs = int((total_len-len(content_str)) / 8)-1
+            for i in range(total_tabs):
+               content_str += "\t"
                total_tabs -= 1
-            string += "  |    |"
-         print(string)
-      #Base of computer and keyboard
-      if i > content_len:
-         print(i, "\t", line)
+         content_str += "  |    |"
+         print(content_str, "\t", total_tabs)
+
+
+
+
+      # Base of computer and keyboard
+      if i > content_len and i > 16:
+             print(i, "\t", line)
+
 
 if __name__ == "__main__":
-   print_computer("1")
+   print_computer("One Two Three Four Five Six Seven")
+
