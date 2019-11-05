@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import histogram
-import os
+# import os
 
 app = Flask(__name__)
 
@@ -16,5 +16,5 @@ def index():
                            sentence=sentence)
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000), debug=True)
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000), debug=True)
