@@ -44,8 +44,8 @@ class Listogram(list):
         for ind in self:
             if ind[0] == word:
                 return True
-            else:
-                return False
+        else:
+            return False
 
     def index_of(self, target):
         """Return the index of entry containing given target word if found in
