@@ -1,3 +1,5 @@
+# help provided by aucoeur @ https://github.com/aucoeur/CS-1.2-Intro-Data-Structures/blob/master/Code/markov_chain.py
+
 import dictogram
 from clean import get_clean_words
 from random import choice, randint
@@ -19,12 +21,11 @@ def markov(corpus):
             markov_dict[first] = [second]
     return markov_dict
 
-def get_random_word(markov, word_list):
+def get_random_word(markov, start_word):
     '''Takes given word and returns a random word in its markov list'''
-    start_word = choice([word for word in word_list if word != word_list[-1]])
     total_links = len(markov[start_word])
+    # print("{} has {} links to go to: {}".format(start_word, total_links, markov[start_word]))
     if total_links >= 2:
-        # janky fix to avoid picking last word
         random = randint(0, total_links-2)
         if total_links == 1:
             random = randint(0, 1)
@@ -35,24 +36,29 @@ def get_random_word(markov, word_list):
 
 def generate_sentence(num_words, markov, word_list):
     sentence = ""
-    for i in range(0, num_words):
-        word = get_random_word(markov, word_list)
-        # print(i+1, word)
-        if i == 0:
-            sentence = word.capitalize()
-        elif i != num_words - 1:
-            sentence += " " + word
-        else:
-            punctuation = [".", "!", "?", "...", "!?"]
-            sentence += choice(punctuation)
-    # output your sentence
-    # print(sentence + "\t: " + str(num_words) + " words")
+
+    start_word = choice([word for word in word_list if word != word_list[-1]])
+    # print("\n--start_word-- \t", start_word)
+    sentence += start_word.capitalize()
+    word = start_word
+
+    for _ in range(1, num_words):
+        word = get_random_word(markov, word)
+        # print("\n--next_word-- \t", word)
+        sentence += " " + word
+
+    punctuation = [".", "!", "?", "...", "!?"]
+    sentence += choice(punctuation)
     return sentence
 
-
 if __name__ == "__main__":
+    # num_words = sys.argv[1]
     word_list = get_clean_words("text_files/markov.txt")
-    histogram = dictogram.Dictogram(word_list)
-    num_words = sys.argv[1]
+    # print("\t--word_list--\n", word_list)
+    
     markov = markov(word_list)
-    print(generate_sentence(num_words, markov, word_list))
+    # print("\t--markov--\n", markov)
+
+    num_words = 10
+    sentence = generate_sentence(int(num_words), markov, word_list)
+    print("\nFinal Sentence of length {} is\n{}".format(num_words, sentence))
