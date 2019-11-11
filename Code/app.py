@@ -1,20 +1,25 @@
 from flask import Flask, render_template
+from markov import markov, generate_sentence
+from clean import get_clean_words
 import histogram
 import os
 
 app = Flask(__name__)
 
 histogram = histogram.Histogram()
-histogram_list = histogram.dictionary_histogram("fish.txt")
+histogram_list = histogram.dictionary_histogram("text_files/markov.txt")
 
 
 @app.route('/')
 def index():
     word = histogram.get_word_by_freq(histogram_list)
-    sentence = histogram.make_sentence(histogram_list, 10)
-    return render_template('index.html', word=word, histogram=histogram_list,
-                           sentence=sentence)
-
+    histo_sentence = histogram.make_sentence(histogram_list, 10)
+    
+    word_list = get_clean_words("text_files/markov.txt")
+    markov_dict = markov(word_list)
+    markov_sentence = generate_sentence(10, markov_dict, word_list)
+    
+    return render_template('index.html', word_list=word_list, markov=markov_dict, markov_sentence=markov_sentence, word=word, histogram=histogram_list,histo_sentence=histo_sentence)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000), debug=True)
+    app.run(host='0.0.0.0', debug=True)

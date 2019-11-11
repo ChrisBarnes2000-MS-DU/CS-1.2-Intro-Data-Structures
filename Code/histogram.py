@@ -39,6 +39,22 @@ class Histogram():
         word = random.choices(list(histogram.keys()), list(probs.values()))
         return str(word)
 
+    def make_sentence(self, histogram, num_words):
+        sentence = ""
+        for i in range(0, num_words):
+            word = self.get_word_by_freq(histogram)
+            # print(i+1, word)
+            if i == 0:
+                sentence = word.capitalize()
+            elif i != num_words - 1:
+                sentence += " " + word
+            else:
+                punctuation = [".", "!", "?", "...", "!?"]
+                sentence += random.choice(punctuation)
+        # output your sentence
+        # print(sentence + "\t: " + str(num_words) + " words")
+        return sentence
+
 if __name__ == "__main__":
     histogram_class = Histogram()
     histogram = histogram_class.dictionary_histogram("text_files/fish.txt")

@@ -1,12 +1,38 @@
-<h1>This need to go to Heroku and Github</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tweet Generator</title>
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+    <br>
+    <br>
+    <h1>Word list from file</h1>
+    <h2>{{ word_list }}</h2>
+    
+    <h1>Histogram of word list</h1>
+    <h2>{{ histogram }}</h2>
+    
+    <h1>Markov Dictionary</h1>
+    <h2>{{ markov }}</h2>
+    
+    <h1>Random Word</h1>
+    <h2>{{ word }}</h2>
+    
+    <h1>Simple Sentence i.e jargon of 10 random words</h1>
+    <h2>{{ histo_sentence }}</h2>
+    
+    <h1>Markov Sentence</h1>
+    <h2>{{ markov_sentence }}</h2>
+    
+    <br>
+    <br>
+    <br>
+    
+    <button value="Refresh Page" onClick="window.location.reload();">Refresh</button>
 
-<h1>ORIGINAL HISTOGRAM</h1>
-<h2>{{ histogram }}</h2>
-<br>
-<h1>Random Simple Sentence i.e jargon of words</h1>
-<h2>{{ sentence }}</h2>
-<br>
-<h1>Random Word</h1>
-<h2>{{ word }}</h2>
-<br>
-<button value="Refresh Page" onClick="window.location.reload();">Refresh</button>
+</body>
+</html>
