@@ -1,6 +1,5 @@
 #!python
 
-
 class Node(object):
 
     def __init__(self, data):
@@ -52,10 +51,30 @@ class LinkedList(object):
         """Return a boolean indicating whether this linked list is empty."""
         return self.head is None
 
+    # This function counts number of nodes in Linked List
+    # iteratively, given 'node' as starting node.
     def length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
+        length = 0
+        node = self.head
+        while node is not None:
+            length += 1
+            node = node.next
+        return length
+
+    # This function counts number of nodes in Linked List
+    # recursively, given 'node' as starting node.
+    def getCountRec(self, node):
+        if (not node):  # Base case
+            return 0
+        else:
+            return 1 + self.getCountRec(node.next)
+
+    # A wrapper over getCountRec()
+    def getCount(self):
+       return self.getCountRec(self.head)
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
