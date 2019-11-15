@@ -34,6 +34,12 @@ class LinkedList(object):
         """Return a string representation of this linked list."""
         return 'LinkedList({!r})'.format(self.items())
 
+    def __iter__(self):
+        current = self.head
+        while current is not None:
+            yield current
+            current = current.next
+
     def items(self):
         """Return a list (dynamic array) of all items in this linked list.
         Best and worst case running time: O(n) for n items in the list (length)
@@ -55,7 +61,7 @@ class LinkedList(object):
 
     # This function counts number of nodes in Linked List
     # iteratively, given 'node' as starting node.
-    def length(self):
+    def traverse_length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(n) Loops through all items once till the end"""
         # TODO: Loop through all nodes and count one for each
@@ -64,15 +70,20 @@ class LinkedList(object):
         while node is not None:
             length += 1
             node = node.next
-        return length  # or return self.getCountRec(self.head)
+        return length
+        
+    def iterable_length(self):
+        length = 0
+        for _ in self:
+            length += 1
+        return length
 
-    # This function counts number of nodes in Linked List
-    # recursively, given 'node' as starting node.
-    def getCountRec(self, node):
+    def recursive_length(self, node):
+        """Return the length of this linked list by counting number of nodes recursively."""
         if (not node):  # Base case
             return 0
         else:
-            return 1 + self.getCountRec(node.next)
+            return 1 + self.recursive_length(node.next)
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -232,7 +243,9 @@ def test_linked_list():
 
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
-    print('length: {}'.format(ll.length()))
+    print('length by traversing: {}'.format(ll.traverse_length()))
+    print('length by recursive: {}'.format(ll.recursive_length(ll.head)))
+    print('length by iterable: {}'.format(ll.iterable_length()))
 
     # Enable this after implementing delete method
     delete_implemented = False
@@ -245,7 +258,7 @@ def test_linked_list():
 
         print('head: {}'.format(ll.head))
         print('tail: {}'.format(ll.tail))
-        print('length: {}'.format(ll.length()))
+        print('length: {}'.format(ll.iterable_length()))
 
     replace_implemented = False
     if replace_implemented:
@@ -256,7 +269,7 @@ def test_linked_list():
         ll.replace(old_item, new_item)
         print('list: {}'.format(ll))
 
-    swap_implemented = True
+    swap_implemented = False
     if swap_implemented:
         print("\tTesting replace:")
         print("list: {}".format(ll))
@@ -264,6 +277,13 @@ def test_linked_list():
         second_item = input("second item: ")
         ll.swap_nodes(first_item, second_item)
         print('list: {}'.format(ll))
+
+    iterable_implemented = True
+    if iterable_implemented:
+        print("\nTesting iterable")
+        # print("list: {}".format(ll))
+        for item in ll:
+            print(item)
 
 
 if __name__ == '__main__':
