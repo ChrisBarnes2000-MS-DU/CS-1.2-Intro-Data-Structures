@@ -1,4 +1,5 @@
 #!python
+#Delete Function Inspired by https://github.com/ablades/CS-1.2-Intro-Data-Structures/blob/master/Code/linkedlist.py
 
 class Node(object):
 
@@ -135,21 +136,39 @@ class LinkedList(object):
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
-        if self.is_empty():
-            #list is empty raise nothing found
-            raise ValueError('Item not found: {}'.format(item))
-        elif self.head.data == item:
-            # Do we remove the head
-            self.head = self.head.next
-            return
-        else:
-            # find and remove element
-            current = self.head
-            while (current.next is not None):
-                if current.next.data == item:
-                    current.next = current.next.next
-                self.tail = current
+        #set starting points
+        current = self.head
+        prev = None
+        print("\n---------DELETE ITEM {}-------------".format(item))
+        # Search for the item to be deleted, keep track of the
+        # previous node as we need to change 'prev.next'
+        while (current is not None):
+            if current.data == item:
+                #item we want to remove is at head
+                if prev is None:
+                    print("Remove the head")
+                    self.head = self.head.next
+                    print("Head is also tail remove it")
+                    if current.next is None:
+                        self.tail = prev
+                #item we want to remove is at tail
+                elif current.next is None:
+                    print("Updating Tail from {} to {}".format(self.tail, prev))
+                    prev.next = None
+                    self.tail = prev
+                else:
+                    #item we want to remove is not an edge case
+                    #make previous node point to next node
+                    print("\nChange Link [{} --> {}] To new link, [{} --> {}]".format(current, current.next, prev, current.next))
+                    prev.next = current.next
+                print("\nAfter Deleteing new list is: ", self)
+                print("Head: {}, Tail: {}".format(self.head, self.tail))
+                return
+            else:
+                #item has not been found yet advance pointers
+                prev = current
                 current = current.next
+        raise ValueError(f'Item not found: {item}')
 
 def test_linked_list():
     ll = LinkedList()
