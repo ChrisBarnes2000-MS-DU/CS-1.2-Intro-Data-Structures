@@ -1,5 +1,6 @@
 #!python
 #Replace and Delete Function Inspired by https://github.com/ablades/CS-1.2-Intro-Data-Structures/blob/master/Code/linkedlist.py
+#Swap Function Inspired by https://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/
 
 class Node(object):
 
@@ -177,6 +178,48 @@ class LinkedList(object):
                 return
             curr = curr.next
 
+    def find_spot(self, item):
+        # Search for item (keep track of prev and Curr)
+        prev = None
+        curr = self.head
+        while curr != None and curr.data != item:
+            prev = curr
+            curr = curr.next
+        return [prev, curr]
+
+    def swap(self, prev, curr):
+        # If previous is not head of linked list
+        if prev != None:
+            prev.next = curr
+        else:  # make previous the new head
+            self.head = curr
+
+    def swap_nodes(self, first, second):
+        """Swap two item in linked list by changin links """
+        # Nothing to do if x and y are same
+        if first == second:
+            return
+
+        # Search for first (keep track of prev and Curr)
+        first_spot = self.find_spot(first)
+        # Search for second (keep track of prev and curr)
+        second_spot = self.find_spot(second)
+        fprev = first_spot[0]
+        fcurr = first_spot[1]
+        sprev = second_spot[0]
+        scurr = second_spot[1]
+        # If either first or second are not present, nothing to do
+        if fcurr == None or scurr == None:
+            return
+
+        self.swap(fprev, scurr)
+        self.swap(sprev, fcurr)
+
+        # Swap next pointers
+        temp = fcurr.next
+        fcurr.next = scurr.next
+        scurr.next = temp
+
 def test_linked_list():
     ll = LinkedList()
     # print('list: {}'.format(ll))
@@ -204,7 +247,7 @@ def test_linked_list():
         print('tail: {}'.format(ll.tail))
         print('length: {}'.format(ll.length()))
 
-    replace_implemented = True
+    replace_implemented = False
     if replace_implemented:
         print("\nTesting replace:")
         print('list: {}'.format(ll))
@@ -212,6 +255,16 @@ def test_linked_list():
         new_item = input("new data for item: ")
         ll.replace(old_item, new_item)
         print('list: {}'.format(ll))
+
+    swap_implemented = True
+    if swap_implemented:
+        print("\tTesting replace:")
+        print("list: {}".format(ll))
+        first_item = input("first item to be swapped: ")
+        second_item = input("second item: ")
+        ll.swap_nodes(first_item, second_item)
+        print('list: {}'.format(ll))
+
 
 if __name__ == '__main__':
     test_linked_list()
