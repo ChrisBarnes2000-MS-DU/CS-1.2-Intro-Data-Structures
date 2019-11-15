@@ -3,7 +3,6 @@
 #Swap Function Inspired by https://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/
 
 class Node(object):
-
     def __init__(self, data):
         """Initialize this node with the given data."""
         self.data = data
