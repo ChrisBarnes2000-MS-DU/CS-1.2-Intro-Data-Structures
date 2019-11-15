@@ -1,5 +1,5 @@
 #!python
-#Delete Function Inspired by https://github.com/ablades/CS-1.2-Intro-Data-Structures/blob/master/Code/linkedlist.py
+#Replace and Delete Function Inspired by https://github.com/ablades/CS-1.2-Intro-Data-Structures/blob/master/Code/linkedlist.py
 
 class Node(object):
 
@@ -63,7 +63,7 @@ class LinkedList(object):
         while node is not None:
             length += 1
             node = node.next
-        return length
+        return length  # or return self.getCountRec(self.head)
 
     # This function counts number of nodes in Linked List
     # recursively, given 'node' as starting node.
@@ -72,10 +72,6 @@ class LinkedList(object):
             return 0
         else:
             return 1 + self.getCountRec(node.next)
-
-    # A wrapper over getCountRec()
-    def getCount(self):
-       return self.getCountRec(self.head)
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -170,15 +166,26 @@ class LinkedList(object):
                 current = current.next
         raise ValueError(f'Item not found: {item}')
 
+    def replace(self, old_item, new_item):
+        """Replace an old item in the list with a new item"""
+        curr = self.head
+
+        while curr is not None:
+
+            if curr.data == old_item:
+                curr.data = new_item
+                return
+            curr = curr.next
+
 def test_linked_list():
     ll = LinkedList()
-    print('list: {}'.format(ll))
+    # print('list: {}'.format(ll))
 
-    print('\nTesting append:')
+    # print('\nTesting append:')
     for item in ['A', 'B', 'C']:
-        print('append({!r})'.format(item))
+        # print('append({!r})'.format(item))
         ll.append(item)
-        print('list: {}'.format(ll))
+    print('list: {}'.format(ll))
 
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
@@ -197,6 +204,14 @@ def test_linked_list():
         print('tail: {}'.format(ll.tail))
         print('length: {}'.format(ll.length()))
 
+    replace_implemented = True
+    if replace_implemented:
+        print("\nTesting replace:")
+        print('list: {}'.format(ll))
+        old_item = input("old item to replace: ")
+        new_item = input("new data for item: ")
+        ll.replace(old_item, new_item)
+        print('list: {}'.format(ll))
 
 if __name__ == '__main__':
     test_linked_list()
