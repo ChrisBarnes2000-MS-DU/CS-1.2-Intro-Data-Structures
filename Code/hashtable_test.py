@@ -4,7 +4,7 @@ from hashtable import HashTable
 import unittest
 # Python 2 and 3 compatibility: unittest module renamed this assertion method
 if not hasattr(unittest.TestCase, 'assertCountEqual'):
-    unittest.TestCase.assertCountEqual = unittest.TestCase.assertItemsEqual
+    unittest.TestCase.assertCountEqual = unittest.TestCase.assertEqual
 
 
 class HashTableTest(unittest.TestCase):
@@ -91,11 +91,13 @@ class HashTableTest(unittest.TestCase):
 
     def test_delete(self):
         ht = HashTable()
+        assert ht.length() == 0
         ht.set('I', 1)
         ht.set('V', 5)
         ht.set('X', 10)
         assert ht.length() == 3
         ht.delete('I')
+        assert ht.length() == 2
         ht.delete('X')
         assert ht.length() == 1
         with self.assertRaises(KeyError):

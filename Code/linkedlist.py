@@ -146,30 +146,30 @@ class LinkedList(object):
         #set starting points
         current = self.head
         prev = None
-        print("\n---------DELETE ITEM {}-------------".format(item))
+        # print("\n---------DELETE ITEM {}-------------".format(item))
         # Search for the item to be deleted, keep track of the
         # previous node as we need to change 'prev.next'
         while (current is not None):
             if current.data == item:
                 #item we want to remove is at head
                 if prev is None:
-                    print("Remove the head")
+                    # print("Remove the head")
                     self.head = self.head.next
-                    print("Head is also tail remove it")
+                    # print("Head is also tail remove it")
                     if current.next is None:
                         self.tail = prev
                 #item we want to remove is at tail
                 elif current.next is None:
-                    print("Updating Tail from {} to {}".format(self.tail, prev))
+                    # print("Updating Tail from {} to {}".format(self.tail, prev))
                     prev.next = None
                     self.tail = prev
                 else:
                     #item we want to remove is not an edge case
                     #make previous node point to next node
-                    print("\nChange Link [{} --> {}] To new link, [{} --> {}]".format(current, current.next, prev, current.next))
+                    # print("\nChange Link [{} --> {}] To new link, [{} --> {}]".format(current, current.next, prev, current.next))
                     prev.next = current.next
-                print("\nAfter Deleteing new list is: ", self)
-                print("Head: {}, Tail: {}".format(self.head, self.tail))
+                # print("\nAfter Deleteing new list is: ", self)
+                # print("Head: {}, Tail: {}".format(self.head, self.tail))
                 return
             else:
                 #item has not been found yet advance pointers
