@@ -120,7 +120,18 @@ class LinkedList(object):
             new_head.next = self.head
             self.head = new_head
 
-    def find(self, quality):
+    def find(self, old_item):
+        """Return an item from this linked list satisfying the given quality.
+        TODO: Best case running time: O(1) Function only runs once finding head
+        TODO: Worst case running time: O(n) Function runs through n loops of length"""
+        # TODO: Loop through all nodes to find item where quality(item) is True
+        # TODO: Check if node's data satisfies given quality function
+        node = self._find(lambda item: item == old_item)
+        if node is not None:
+            return node.data
+        raise ValueError(f'Item not found: {old_item}')
+
+    def _find(self, quality):
         """Return an item from this linked list satisfying the given quality.
         TODO: Best case running time: O(1) Function only runs once finding head
         TODO: Worst case running time: O(n) Function runs through n loops of length"""
@@ -130,7 +141,7 @@ class LinkedList(object):
 
         while node is not None:
             if quality(node.data):
-                return node.data
+                return node
             else:
                 node = node.next
         return None
@@ -179,16 +190,12 @@ class LinkedList(object):
 
     def replace(self, old_item, new_item):
         """Replace an old item in the list with a new item"""
-        curr = self.head
+        node = self._find(lambda item: item == old_item)
+        if node is not None:
+            node.data = new_item
+        raise ValueError(f'Item not found: {old_item}')
 
-        while curr is not None:
-
-            if curr.data == old_item:
-                curr.data = new_item
-                return
-            curr = curr.next
-
-    def find_spot(self, item):
+    def _find_spot(self, item):
         # Search for item (keep track of prev and Curr)
         prev = None
         curr = self.head
@@ -211,9 +218,9 @@ class LinkedList(object):
             return
 
         # Search for first (keep track of prev and Curr)
-        first_spot = self.find_spot(first)
+        first_spot = self._find_spot(first)
         # Search for second (keep track of prev and curr)
-        second_spot = self.find_spot(second)
+        second_spot = self._find_spot(second)
         fprev = first_spot[0]
         fcurr = first_spot[1]
         sprev = second_spot[0]
@@ -259,7 +266,7 @@ def test_linked_list():
         print('tail: {}'.format(ll.tail))
         print('length: {}'.format(ll.iterable_length()))
 
-    replace_implemented = False
+    replace_implemented = True
     if replace_implemented:
         print("\nTesting replace:")
         print('list: {}'.format(ll))
