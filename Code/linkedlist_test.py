@@ -63,53 +63,53 @@ class LinkedListTest(unittest.TestCase):
 
     def test_length_after_append(self):
         ll = LinkedList()
-        assert ll.iterable_length() == 0
+        assert ll.length() == 0
         # Append should increase length
         ll.append('A')
-        assert ll.iterable_length() == 1
+        assert ll.length() == 1
         ll.append('B')
-        assert ll.iterable_length() == 2
+        assert ll.length() == 2
         ll.append('C')
-        assert ll.iterable_length() == 3
+        assert ll.length() == 3
 
     def test_length_after_prepend(self):
         ll = LinkedList()
-        assert ll.iterable_length() == 0
+        assert ll.length() == 0
         # Prepend should increase length
         ll.prepend('C')
-        assert ll.iterable_length() == 1
+        assert ll.length() == 1
         ll.prepend('B')
-        assert ll.iterable_length() == 2
+        assert ll.length() == 2
         ll.prepend('A')
-        assert ll.iterable_length() == 3
+        assert ll.length() == 3
 
     def test_length_after_append_and_prepend(self):
         ll = LinkedList()
-        assert ll.iterable_length() == 0
+        assert ll.length() == 0
         # Append and prepend should increase length
         ll.append('C')
-        assert ll.iterable_length() == 1
+        assert ll.length() == 1
         ll.prepend('B')
-        assert ll.iterable_length() == 2
+        assert ll.length() == 2
         ll.append('D')
-        assert ll.iterable_length() == 3
+        assert ll.length() == 3
         ll.prepend('A')
-        assert ll.iterable_length() == 4
+        assert ll.length() == 4
 
     def test_length_after_delete(self):
         ll = LinkedList(['A', 'B', 'C', 'D', 'E'])
-        assert ll.iterable_length() == 5
+        assert ll.length() == 5
         # Delete should decrease length
         ll.delete('A')
-        assert ll.iterable_length() == 4
+        assert ll.length() == 4
         ll.delete('E')
-        assert ll.iterable_length() == 3
+        assert ll.length() == 3
         ll.delete('C')
-        assert ll.iterable_length() == 2
+        assert ll.length() == 2
         ll.delete('D')
-        assert ll.iterable_length() == 1
+        assert ll.length() == 1
         ll.delete('B')
-        assert ll.iterable_length() == 0
+        assert ll.length() == 0
 
     def test_append(self):
         ll = LinkedList()

@@ -12,13 +12,12 @@ class Node(object):
         """Return a string representation of this node."""
         return 'Node({!r})'.format(self.data)
 
-
 class LinkedList(object):
-
     def __init__(self, items=None):
         """Initialize this linked list and append the given items, if any."""
         self.head = None  # First node
         self.tail = None  # Last node
+        self.size = 0 # length/size of linked list
         # Append given items
         if items is not None:
             for item in items:
@@ -60,29 +59,23 @@ class LinkedList(object):
 
     # This function counts number of nodes in Linked List
     # iteratively, given 'node' as starting node.
-    def traverse_length(self):
+    def length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(n) Loops through all items once till the end"""
         # TODO: Loop through all nodes and count one for each
-        length = 0
-        node = self.head
-        while node is not None:
-            length += 1
-            node = node.next
-        return length
-        
-    def iterable_length(self):
-        length = 0
-        for _ in self:
-            length += 1
-        return length
-
-    def recursive_length(self, node):
-        """Return the length of this linked list by counting number of nodes recursively."""
-        if (not node):  # Base case
-            return 0
-        else:
-            return 1 + self.recursive_length(node.next)
+        # Calculate length by traversing
+        # length = 0
+        # node = self.head
+        # while node is not None:
+        #     length += 1
+        #     node = node.next
+        # return length
+        # OR Calculate Via Iterating
+        # length = 0
+        # for _ in self:
+        #     length += 1
+        # return length
+        return self.size
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -90,22 +83,14 @@ class LinkedList(object):
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
         node = Node(item)
+        # ll is empty start by adding a head node
         if self.is_empty():
             self.head = node
+        # if there is a tail set its next to the new node and update the tail
         if self.tail is not None:
             self.tail.next = node
         self.tail = node
-
-        """
-        node = Node(item)
-        if self.head is None:
-            self.head = node
-            return
-        current = self.head
-        while current.next is not None:
-            current = current.next
-        current.next = node
-        """
+        self.size += 1
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
@@ -119,6 +104,7 @@ class LinkedList(object):
         else:
             new_head.next = self.head
             self.head = new_head
+        self.size += 1
 
     def find(self, old_item):
         """Return an item from this linked list satisfying the given quality.
@@ -181,6 +167,7 @@ class LinkedList(object):
                     prev.next = current.next
                 # print("\nAfter Deleteing new list is: ", self)
                 # print("Head: {}, Tail: {}".format(self.head, self.tail))
+                self.size -= 1
                 return
             else:
                 #item has not been found yet advance pointers
@@ -249,9 +236,7 @@ def test_linked_list():
 
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
-    print('length by traversing: {}'.format(ll.traverse_length()))
-    print('length by recursive: {}'.format(ll.recursive_length(ll.head)))
-    print('length by iterable: {}'.format(ll.iterable_length()))
+    print('length: {}'.format(ll.length()))
 
     # Enable this after implementing delete method
     delete_implemented = False
@@ -264,7 +249,7 @@ def test_linked_list():
 
         print('head: {}'.format(ll.head))
         print('tail: {}'.format(ll.tail))
-        print('length: {}'.format(ll.iterable_length()))
+        print('length: {}'.format(ll.length()))
 
     replace_implemented = True
     if replace_implemented:
