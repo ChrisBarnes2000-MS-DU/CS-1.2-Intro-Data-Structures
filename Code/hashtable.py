@@ -66,9 +66,10 @@ class HashTable(object):
         TODO: Running time: O(l) loops through average number of items in buckets linked list"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
-        for item in self:
-            if item[0] == key:
-                return True
+        bucket = self.buckets[self._bucket_index(key)]
+        item = bucket._find(lambda item: item[0] == key)
+        if item is not None:
+            return True
         return False
 
     def get(self, key):
@@ -79,9 +80,10 @@ class HashTable(object):
         # TODO: If found, return value associated with given key
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
-        for item in self:
-            if item[0] == key:
-                return item[1]
+        bucket = self.buckets[self._bucket_index(key)]
+        item = bucket._find(lambda item: item[0] == key)
+        if item is not None and item.data[0] == key:
+            return item.data[1]
         raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
@@ -102,8 +104,9 @@ class HashTable(object):
             self.count += 1
         else:
             # print("\n\n----Changeing item----")
-            old_item = bucket.find(lambda item: item[0] == key)
-            # print(old_item)
+            old_item = bucket._find(lambda item: item[0] == key).data
+            # print("old_item", old_item)
+            # print("new_item", new_item)
             bucket.replace(old_item, new_item)
         # print("bucket", bucket_id, "has: ", bucket)
 
@@ -121,7 +124,7 @@ class HashTable(object):
         if exists:
             print("Count after Delete: ",self.count)
             self.count -= 1
-            return bucket.delete(bucket.find(lambda item: item[0] == key))
+            return bucket.delete(bucket._find(lambda item: item[0] == key).data)
         raise KeyError('Key not found: {}'.format(key))
 
 def test_hash_table():

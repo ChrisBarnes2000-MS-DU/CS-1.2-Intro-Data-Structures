@@ -111,8 +111,8 @@ class LinkedList(object):
         """Return an item (node's data) from this linked list.
         TODO: Best case running time: O(1) Function only runs once finding head
         TODO: Worst case running time: O(n) Function runs through n loops of length"""
-        # use _find (help function) to get the node it it exists and return it's data the item
-        node = self._find(lambda item: item == key)
+        # use _find (help function) to get the node if it exists and return it's data the item
+        node = self._find(lambda item: item[0] == key)
         if node is not None:
             return node.data
         raise ValueError(f'Item not found: {key}')
@@ -122,6 +122,7 @@ class LinkedList(object):
         node = self._find(lambda item: item == old_item)
         if node is not None:
             node.data = new_item
+            return
         raise ValueError(f'Item not found: {old_item}')
 
     def delete(self, item):
