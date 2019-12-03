@@ -38,6 +38,10 @@ class LinkedList(object):
             yield current
             current = current.next
 
+    def is_empty(self):
+        """Return a boolean indicating whether this linked list is empty."""
+        return self.head is None
+
     def items(self):
         """Return a list (dynamic array) of all items in this linked list.
         Best and worst case running time: O(n) for n items in the list (length)
@@ -53,28 +57,10 @@ class LinkedList(object):
         # Now list contains items from all nodes
         return items  # O(1) time to return list
 
-    def is_empty(self):
-        """Return a boolean indicating whether this linked list is empty."""
-        return self.head is None
-
-    # This function counts number of nodes in Linked List
-    # iteratively, given 'node' as starting node.
     def length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(n) Loops through all items once till the end"""
         # TODO: Loop through all nodes and count one for each
-        # Calculate length by traversing
-        # length = 0
-        # node = self.head
-        # while node is not None:
-        #     length += 1
-        #     node = node.next
-        # return length
-        # OR Calculate Via Iterating
-        # length = 0
-        # for _ in self:
-        #     length += 1
-        # return length
         return self.size
 
     def append(self, item):
@@ -106,19 +92,8 @@ class LinkedList(object):
             self.head = new_head
         self.size += 1
 
-    def find(self, old_item):
-        """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(1) Function only runs once finding head
-        TODO: Worst case running time: O(n) Function runs through n loops of length"""
-        # TODO: Loop through all nodes to find item where quality(item) is True
-        # TODO: Check if node's data satisfies given quality function
-        node = self._find(lambda item: item == old_item)
-        if node is not None:
-            return node.data
-        raise ValueError(f'Item not found: {old_item}')
-
     def _find(self, quality):
-        """Return an item from this linked list satisfying the given quality.
+        """Return an node from this linked list satisfying the given quality.
         TODO: Best case running time: O(1) Function only runs once finding head
         TODO: Worst case running time: O(n) Function runs through n loops of length"""
         # TODO: Loop through all nodes to find item where quality(item) is True
@@ -131,6 +106,23 @@ class LinkedList(object):
             else:
                 node = node.next
         return None
+
+    def find(self, key):
+        """Return an item (node's data) from this linked list.
+        TODO: Best case running time: O(1) Function only runs once finding head
+        TODO: Worst case running time: O(n) Function runs through n loops of length"""
+        # use _find (help function) to get the node it it exists and return it's data the item
+        node = self._find(lambda item: item == key)
+        if node is not None:
+            return node.data
+        raise ValueError(f'Item not found: {key}')
+
+    def replace(self, old_item, new_item):
+        """Replace an old item in the list with a new item"""
+        node = self._find(lambda item: item == old_item)
+        if node is not None:
+            node.data = new_item
+        raise ValueError(f'Item not found: {old_item}')
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -175,14 +167,8 @@ class LinkedList(object):
                 current = current.next
         raise ValueError(f'Item not found: {item}')
 
-    def replace(self, old_item, new_item):
-        """Replace an old item in the list with a new item"""
-        node = self._find(lambda item: item == old_item)
-        if node is not None:
-            node.data = new_item
-        raise ValueError(f'Item not found: {old_item}')
 
-    def _find_spot(self, item):
+    def _findspot(self, item):
         # Search for item (keep track of prev and Curr)
         prev = None
         curr = self.head
@@ -205,9 +191,9 @@ class LinkedList(object):
             return
 
         # Search for first (keep track of prev and Curr)
-        first_spot = self._find_spot(first)
+        first_spot = self._findspot(first)
         # Search for second (keep track of prev and curr)
-        second_spot = self._find_spot(second)
+        second_spot = self._findspot(second)
         fprev = first_spot[0]
         fcurr = first_spot[1]
         sprev = second_spot[0]
@@ -223,6 +209,7 @@ class LinkedList(object):
         temp = fcurr.next
         fcurr.next = scurr.next
         scurr.next = temp
+
 
 def test_linked_list():
     ll = LinkedList()
