@@ -2,7 +2,7 @@ import random
 from utils import time_it, get_clean_words
 
 class Histogram():
-    @time_it
+    # @time_it
     def prob_count(self, histogram):
         """TODO: Running time: O(n) loops through number of items in provided histogram"""
         probs = {}
@@ -12,7 +12,7 @@ class Histogram():
             probs[key] = probs.get(key, probability)
         return probs
 
-    @time_it
+    # @time_it
     def dictionary_histogram(self, filename):
         histogram = {}
 
@@ -24,14 +24,14 @@ class Histogram():
                 histogram[i] = histogram.get(i, 0) + 1
         return histogram
 
-    @time_it
+    # @time_it
     def list_of_words(self, length):
         dict_words = '/usr/share/dict/words'
         words_str = open(dict_words, 'r').read()
         all_words = words_str.split("\n")
         return all_words[0:length]
 
-    @time_it
+    # @time_it
     def find(self, item, hgram):
         """TODO: Running time: O(n) loops through number of items in provided histogram"""
         for index, pair in enumerate(hgram):
@@ -39,7 +39,7 @@ class Histogram():
                 return index
         return None
 
-    @time_it
+    # @time_it
     def tuple_histogram(self, words):
         hgram = []                           # create a new list called hgram
         for word in words:                   # for each word in the list of words
@@ -52,7 +52,7 @@ class Histogram():
                 hgram[index] = new_pair      # replace word-count pair
         return hgram                         # return the hgram
 
-    @time_it
+    # @time_it
     def count(self, word, hgram):
         """TODO: Running time: O(n) loops through number of items in provided histogram"""
         index = self.find(word, hgram)     # 1. call the find function; 2. assign variable
@@ -62,7 +62,7 @@ class Histogram():
         else:
             return 0
 
-    @time_it
+    # @time_it
     def get_word_by_freq(self, histogram):
         # word = random.choice(list(histogram.keys()))
         word_ind = random.random()*10
@@ -76,12 +76,12 @@ class Histogram():
             if total >= word_ind:
                 return word
 
-    @time_it
+    # @time_it
     def get_word_weighted(self, histogram, probs):
         word = random.choices(list(histogram.keys()), list(probs.values()))
         return str(word)
 
-    @time_it
+    # @time_it
     def make_sentence(self, histogram, num_words):
         sentence = ""
         for i in range(0, num_words):
