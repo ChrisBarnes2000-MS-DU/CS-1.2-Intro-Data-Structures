@@ -1,9 +1,9 @@
 import random
-import timeit
+from utils import time_it
 from clean import get_clean_words
 
 class Histogram():
-
+    @time_it
     def prob_count(self, histogram):
         """TODO: Running time: O(n) loops through number of items in provided histogram"""
         probs = {}
@@ -13,6 +13,7 @@ class Histogram():
             probs[key] = probs.get(key, probability)
         return probs
 
+    @time_it
     def dictionary_histogram(self, filename):
         histogram = {}
 
@@ -24,12 +25,14 @@ class Histogram():
                 histogram[i] = histogram.get(i, 0) + 1
         return histogram
 
+    @time_it
     def list_of_words(self, length):
         dict_words = '/usr/share/dict/words'
         words_str = open(dict_words, 'r').read()
         all_words = words_str.split("\n")
         return all_words[0:length]
 
+    @time_it
     def find(self, item, hgram):
         """TODO: Running time: O(n) loops through number of items in provided histogram"""
         for index, pair in enumerate(hgram):
@@ -37,6 +40,7 @@ class Histogram():
                 return index
         return None
 
+    @time_it
     def tuple_histogram(self, words):
         hgram = []                           # create a new list called hgram
         for word in words:                   # for each word in the list of words
@@ -49,6 +53,7 @@ class Histogram():
                 hgram[index] = new_pair      # replace word-count pair
         return hgram                         # return the hgram
 
+    @time_it
     def count(self, word, hgram):
         """TODO: Running time: O(n) loops through number of items in provided histogram"""
         index = self.find(word, hgram)     # 1. call the find function; 2. assign variable
@@ -58,6 +63,7 @@ class Histogram():
         else:
             return 0
 
+    @time_it
     def get_word_by_freq(self, histogram):
         # word = random.choice(list(histogram.keys()))
         word_ind = random.random()*10
@@ -71,10 +77,12 @@ class Histogram():
             if total >= word_ind:
                 return word
 
+    @time_it
     def get_word_weighted(self, histogram, probs):
         word = random.choices(list(histogram.keys()), list(probs.values()))
         return str(word)
 
+    @time_it
     def make_sentence(self, histogram, num_words):
         sentence = ""
         for i in range(0, num_words):
@@ -114,7 +122,7 @@ if __name__ == "__main__":
         prob_results = histogram_class.prob_count(results)
         print("**__RESULTS_PROBABILITIES__**\n", prob_results)
 
-    implemented_tuple_histogram = False
+    implemented_tuple_histogram = True
     if implemented_tuple_histogram:
         histo = Histogram()
         word_list = histo.list_of_words(5)
@@ -132,23 +140,3 @@ if __name__ == "__main__":
         print("COUNT: aal = 2", histo.count('aal', hgram) == 2)    # => True
         print("COUNT: aalii = 1", histo.count('aalii', hgram) == 1)  # => True
         print("COUNT: zoo = 0", histo.count('zoo', hgram) == 0)    # => True
-
-    implemented_benchmarking = False
-    if implemented_benchmarking:
-        histo = Histogram()
-        hundred_words = histo.list_of_words(100)
-        # ten_thousand_words = histo.list_of_words(10000)
-
-        hundred_hgram = histo.tuple_histogram(hundred_words)
-        # ten_thousand_hgram = histo.tuple_histogram(ten_thousand_words)
-
-        hundred_search = hundred_words[-1]
-        # ten_thousand_search = ten_thousand_words[-1]
-
-        stmt = "count('{}', hundred_hgram)".format(hundred_search)
-        setup = "from __main__ import hundred_hgram"
-        timer = timeit.Timer(stmt, setup=setup)
-
-        iterations = 10000
-        result = timer.timeit(number=iterations)
-        print("count time for 100-word histogram: " + str(result))
