@@ -26,7 +26,7 @@ def make_sentence():
 if __name__ == "__main__":
     #The program only accepts one argument: the number of words to be selected.
     if len(sys.argv) != 2:
-        print("Try again with 1 argument: he number of words to give!")
+        print("Try again with 1 argument: the number of words to give!")
     else:
         #All parameters except the number of words will be hard-coded.
         num = int(sys.argv[1])
