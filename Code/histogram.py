@@ -1,6 +1,5 @@
 import random
-from utils import time_it
-from clean import get_clean_words
+from utils import time_it, get_clean_words
 
 class Histogram():
     @time_it

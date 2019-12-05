@@ -1,4 +1,5 @@
 from collections import Counter
+from utils import get_clean_words
 import dictionary_words
 import rearrange
 import random
@@ -17,7 +18,7 @@ def check_anagram(input1, input2):
 def main():
     if len(sys.argv) == 2:
         #Open dictionary/words file list to check if word is real before making anagram
-        words_list = dictionary_words.get_file_line("/usr/share/dict/words")
+        words_list = get_clean_words("/usr/share/dict/words")
         #Get the word via the terminal input
         word = sys.argv[1]
         print(word)

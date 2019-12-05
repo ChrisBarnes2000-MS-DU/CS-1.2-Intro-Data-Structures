@@ -1,7 +1,7 @@
 # help provided by aucoeur @ https://github.com/aucoeur/CS-1.2-Intro-Data-Structures/blob/master/Code/markov_chain.py
 
 import dictogram
-from clean import get_clean_words
+from utils import time_it, get_clean_words
 from random import choice, randint
 import sys
 
