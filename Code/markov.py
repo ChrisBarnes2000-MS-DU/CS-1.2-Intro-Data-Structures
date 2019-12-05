@@ -1,26 +1,29 @@
 # help provided by aucoeur @ https://github.com/aucoeur/CS-1.2-Intro-Data-Structures/blob/master/Code/markov_chain.py
 
-import dictogram
 from utils import time_it, get_clean_words
 from random import choice, randint
+import dictogram
+import hashtable
+import queue
 import sys
 
 class First_Order_Markov():
-    def markov(self, corpus):
+    def __init__(self):
         '''Creates word pairs and puts them into a markov dictionary'''
-        pairs = []
-        markov_dict = {}
+        self.pairs = []
+        self.markov_dict = {}
 
+    def markov(self, corpus):
         # create linked pairs
         for i in range(len(corpus)-1):
-            pairs.append((corpus[i], corpus[i+1]))
+            self.pairs.append((corpus[i], corpus[i+1]))
         # sort through connections and make a dictionary of routes
-        for first, second in pairs:
-            if first in markov_dict.keys():
-                markov_dict[first].append(second)
+        for first, second in self.pairs:
+            if first in self.markov_dict.keys():
+                self.markov_dict[first].append(second)
             else:
-                markov_dict[first] = [second]
-        return markov_dict
+                self.markov_dict[first] = [second]
+        return self.markov_dict
 
     def get_random_word(self, markov, start_word):
         '''Takes given word and returns a random word in its markov list'''
@@ -52,6 +55,13 @@ class First_Order_Markov():
         sentence += choice(punctuation)
         return sentence
 
+class Nth_Order_Markov():
+    def __init__(self):
+        self.markov_hash = hashtable.HashTable()
+
+    def markov(self, corpus):
+        pass
+
 if __name__ == "__main__":
     #The program only accepts one argument: the number of words to be selected.
     if len(sys.argv) != 2:
@@ -61,15 +71,26 @@ if __name__ == "__main__":
         #All parameters except the number of words will be hard-coded.
         num_words = int(sys.argv[1])
 
+    #Used for any of the Markovs
+    word_list = get_clean_words("text_files/markov.txt")
+    # print("\t--word_list--\n", word_list)
+
     implement_first_order_markov = False
     if implement_first_order_markov:
-        markov_class = First_Order_Markov()
+        first_markov_class = First_Order_Markov()
 
-        word_list = get_clean_words("text_files/markov.txt")
-        # print("\t--word_list--\n", word_list)
-
-        markov = markov_class.markov(word_list)
+        markov = first_markov_class.markov(word_list)
         # print("\t--markov--\n", markov)
 
-        sentence = markov_class.generate_sentence(int(num_words), markov, word_list)
+        sentence = first_markov_class.generate_sentence(num_words, markov, word_list)
         print("\nFinal Sentence of length {} is\n{}".format(num_words, sentence))
+
+    implement_Nth_order_markov = True
+    if implement_Nth_order_markov:
+        markov_class = Nth_Order_Markov()
+
+        # markov = markov_class.markov(word_list)
+        # # print("\t--markov--\n", markov)
+
+        # sentence = markov_class.generate_sentence(num_words, markov, word_list)
+        # print("\nFinal Sentence of length {} is\n{}".format(num_words, sentence))
