@@ -1,4 +1,5 @@
 import random
+import timeit
 from clean import get_clean_words
 
 class Histogram():
@@ -113,7 +114,7 @@ if __name__ == "__main__":
         prob_results = histogram_class.prob_count(results)
         print("**__RESULTS_PROBABILITIES__**\n", prob_results)
 
-    implemented_tuple_histogram = True
+    implemented_tuple_histogram = False
     if implemented_tuple_histogram:
         histo = Histogram()
         word_list = histo.list_of_words(5)
@@ -131,3 +132,23 @@ if __name__ == "__main__":
         print("COUNT: aal = 2", histo.count('aal', hgram) == 2)    # => True
         print("COUNT: aalii = 1", histo.count('aalii', hgram) == 1)  # => True
         print("COUNT: zoo = 0", histo.count('zoo', hgram) == 0)    # => True
+
+    implemented_benchmarking = False
+    if implemented_benchmarking:
+        histo = Histogram()
+        hundred_words = histo.list_of_words(100)
+        # ten_thousand_words = histo.list_of_words(10000)
+
+        hundred_hgram = histo.tuple_histogram(hundred_words)
+        # ten_thousand_hgram = histo.tuple_histogram(ten_thousand_words)
+
+        hundred_search = hundred_words[-1]
+        # ten_thousand_search = ten_thousand_words[-1]
+
+        stmt = "count('{}', hundred_hgram)".format(hundred_search)
+        setup = "from __main__ import hundred_hgram"
+        timer = timeit.Timer(stmt, setup=setup)
+
+        iterations = 10000
+        result = timer.timeit(number=iterations)
+        print("count time for 100-word histogram: " + str(result))
