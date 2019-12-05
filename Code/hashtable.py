@@ -1,5 +1,5 @@
 #!python
-
+from utils import time_it
 from linkedlist import LinkedList
 
 class HashTable(object):
@@ -23,11 +23,13 @@ class HashTable(object):
             for item in bucket.items():
                 yield item
 
+    @time_it
     def _bucket_index(self, key):
         """Return the bucket index where the given key would be stored."""
         # Calculate the given key's hash code and transform into bucket index
         return hash(key) % len(self.buckets)
 
+    @time_it
     def keys(self):
         """Return a list of all keys in this hash table.
         TODO: Running time: O(bl) or O(n) loops through all buckets and all items in the buckets"""
@@ -37,6 +39,7 @@ class HashTable(object):
             all_keys.append(items[0])
         return all_keys
 
+    @time_it
     def values(self):
         """Return a list of all values in this hash table.
         TODO: Running time: O(bl) or O(n) loops through all buckets and all items in the buckets"""
@@ -47,6 +50,7 @@ class HashTable(object):
             all_values.append(item[1])
         return all_values
 
+    @time_it
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table.
         TODO: Running time: O(bl) or O(n) loops through all buckets and all items in the buckets"""
@@ -56,11 +60,13 @@ class HashTable(object):
             all_items.extend(bucket.items())
         return all_items
 
+    @time_it
     def length(self):
         """Return the number of key-value entries by traversing its buckets.
         TODO: Running time: O(1) Only one return constant time"""
         return self.count
 
+    @time_it
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(l) loops through average number of items in buckets linked list"""
@@ -72,6 +78,7 @@ class HashTable(object):
             return True
         return False
 
+    @time_it
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(l) loops through average number of items in buckets linked list"""
@@ -86,6 +93,7 @@ class HashTable(object):
             return item.data[1]
         raise KeyError('Key not found: {}'.format(key))
 
+    @time_it
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(l) loops through average number of items in buckets linked list"""
@@ -110,6 +118,7 @@ class HashTable(object):
             bucket.replace(old_item, new_item)
         # print("bucket", bucket_id, "has: ", bucket)
 
+    @time_it
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(l) loops through average number of items in buckets linked list"""
