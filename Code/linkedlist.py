@@ -1,6 +1,7 @@
 #!python
 #Replace and Delete Function Inspired by https://github.com/ablades/CS-1.2-Intro-Data-Structures/blob/master/Code/linkedlist.py
 #Swap Function Inspired by https://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/
+from utils import time_it
 
 class Node(object):
     def __init__(self, data):
@@ -42,6 +43,7 @@ class LinkedList(object):
         """Return a boolean indicating whether this linked list is empty."""
         return self.head is None
 
+    @time_it
     def items(self):
         """Return a list (dynamic array) of all items in this linked list.
         Best and worst case running time: O(n) for n items in the list (length)
@@ -63,6 +65,7 @@ class LinkedList(object):
         # TODO: Loop through all nodes and count one for each
         return self.size
 
+    @time_it
     def append(self, item):
         """Insert the given item at the tail of this linked list.
         TODO: Running time: O(1) static function always run the same amount"""
@@ -78,6 +81,7 @@ class LinkedList(object):
         self.tail = node
         self.size += 1
 
+    @time_it
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
         TODO: Running time: O(1) static function always run the same amount"""
@@ -92,6 +96,7 @@ class LinkedList(object):
             self.head = new_head
         self.size += 1
 
+    @time_it
     def _find(self, quality):
         """Return an node from this linked list satisfying the given quality.
         TODO: Best case running time: O(1) Function only runs once finding head
@@ -107,6 +112,7 @@ class LinkedList(object):
                 node = node.next
         return None
 
+    @time_it
     def find(self, key):
         """Return an item (node's data) from this linked list.
         TODO: Best case running time: O(1) Function only runs once finding head
@@ -117,6 +123,7 @@ class LinkedList(object):
             return node.data
         raise ValueError(f'Item not found: {key}')
 
+    @time_it
     def replace(self, old_item, new_item):
         """Replace an old item in the list with a new item"""
         node = self._find(lambda item: item == old_item)
@@ -125,6 +132,7 @@ class LinkedList(object):
             return
         raise ValueError(f'Item not found: {old_item}')
 
+    @time_it
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
         TODO: Best case running time: O(1) Function only runs once cause there's nothing or it finds the head
@@ -168,7 +176,7 @@ class LinkedList(object):
                 current = current.next
         raise ValueError(f'Item not found: {item}')
 
-
+    @time_it
     def _findspot(self, item):
         # Search for item (keep track of prev and Curr)
         prev = None
@@ -178,6 +186,7 @@ class LinkedList(object):
             curr = curr.next
         return [prev, curr]
 
+    @time_it
     def swap(self, prev, curr):
         # If previous is not head of linked list
         if prev != None:
@@ -185,6 +194,7 @@ class LinkedList(object):
         else:  # make previous the new head
             self.head = curr
 
+    @time_it
     def swap_nodes(self, first, second):
         """Swap two item in linked list by changin links """
         # Nothing to do if x and y are same
