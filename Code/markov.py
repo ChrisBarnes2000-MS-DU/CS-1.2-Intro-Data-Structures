@@ -57,48 +57,68 @@ class First_Order_Markov():
         return sentence
 
 class Nth_Order_Markov():
-    def __init__(self):
-        self.histogram_class = histogram.Histogram()
-        self.markov_hash = hashtable.HashTable(init_size=5)
-        self.transition = queue.Queue(maxsize=2)
-        self.lst = []
+    def __init__(self, words_list=None):
+        """Construct a Markov Chain model.
+           Param: words_list(list of str)"""
+        self.corpus = words_list
+        # populate the Markov Chain
+        self.chain = self.populate_chain()
 
-    def markov(self, corpus):
+        # self.markov_hash = hashtable.HashTable(init_size=5)
+
+    def populate_chain(self):
+        """Parameters: MarkovChain object
+            Construct a dictionary representing the conditional probabilities
+            of transitioning from a given state in the corpus to the next.
+            Returns: (dict):  where each key is a state, and each value
+                              is a nested dict containing the transitions
+                              out of that state, with int counts of their
+                              appearances after the state in the corpus
+            """
+        self.chain = dictogram.Dictogram()
+        self.transition = queue.Queue(maxsize=2)
         # create linked pairs
-        for i in range(len(corpus)-1):
-            #if empty add first two then jump to add to hashtable
+        for i in range(len(self.corpus)-1):
+            #if empty add first two/Nth words from the corpus
             if self.transition.empty():
-                self.transition.put(corpus[i])
-                self.transition.put(corpus[i+1])
-                # print("adding {} and {} to tansition".format(corpus[i], corpus[i+1]))
+                self.transition.put(self.corpus[i])         #current state
+                self.transition.put(self.corpus[i+1])       #word after
                 # print(self.transition.queue)
-            #Transition not empty so update it
+                # create a word frequency dict to go along with each state
+                state = self.transition.queue[0]
+                token_after = self.transition.queue[1]
+                # print("adding {} and {} to tansition".format(state, token_after))
+                if self.chain.get(state, None) is None:
+                    self.chain[state] = dictogram.Dictogram([token_after])
             else:
+                #Transition not empty so update it
                 self.transition.get()
                 # remove = self.transition.get()
                 # print("removing {} to tansition".format(remove))
                 # print("adding {} to tansition".format(corpus[i+1]))
                 # self.transition.put(corpus[i])
-                self.transition.put(corpus[i+1])
-                # print(self.transition.queue)
 
-            # Sort through Transitions and make a HASHTABLE of routes
-            # Add the current set of transitions to the hash table
-            key = (self.transition.queue[0], self.transition.queue[1])
-            # key = self.transition.queue[0]
-            if self.markov_hash.contains(key):
-                self.markov_hash.set(key, self.markov_hash.get(key)+1)
-            else:
-                self.markov_hash.set(key, 1)
-            # self.lst.append((key, self.histogram_class.tuple_histogram(key)))
-        
-        # print("\n\t--list of key, histogram--\n", self.lst)
-        # print("\n\t--histogram from list --\n", self.histogram_class.tuple_histogram(self.lst))
-        # return self.lst
+                self.transition.put(self.corpus[i+1])
+                # print(self.transition.queue)
+                state = self.transition.queue[0]
+                token_after = self.transition.queue[1]
+                # if the state already exists, add the token and count
+                if self.chain.get(state, None) is None:
+                    self.chain[state] = dictogram.Dictogram([token_after])
+                self.chain[state].add_count(token_after)
+        return self.chain
+
+        # key = (self.transition.queue[0], self.transition.queue[1])
+        # # key = self.transition.queue[0]
+        # if self.markov_hash.contains(key):
+        #     self.markov_hash.set(key, self.markov_hash.get(key)+1)
+        # else:
+        #     self.markov_hash.set(key, 1)
+
         # print("\n\t--histogram from markov hash--\n", self.histogram_class.tuple_histogram(self.markov_hash))
         # return word_histo
         # print("\n\t--markov_hash--\n", self.markov_hash)
-        return self.markov_hash
+        # return self.markov_hash
 
 if __name__ == "__main__":
     #The program only accepts one argument: the number of words to be selected.
@@ -112,6 +132,7 @@ if __name__ == "__main__":
     #Used for any of the Markovs
     # word_list = get_clean_words("text_files/markov.txt")
     word_list = get_clean_words("text_files/second_markov.txt")
+    # word_list = get_clean_words("text_files/fish.txt")
     print("\t--word_list--\n", word_list)
 
     implement_first_order_markov = True
@@ -126,10 +147,8 @@ if __name__ == "__main__":
 
     implement_Nth_order_markov = True
     if implement_Nth_order_markov:
-        markov_class = Nth_Order_Markov()
-
-        markov = markov_class.markov(word_list)
-        print("\n\t--second/Nth_order_markov--\n", markov)
+        markov = Nth_Order_Markov(word_list)
+        print("\n\t--second/Nth_order_markov--\n", markov.chain)
 
         # sentence = markov_class.generate_sentence(num_words, markov, word_list)
         # print("\nFinal Sentence of length {} is\n{}".format(num_words, sentence))
