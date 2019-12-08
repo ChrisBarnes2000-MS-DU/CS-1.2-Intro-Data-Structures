@@ -2,47 +2,44 @@
 from utils import time_it, get_clean_words
 from dictogram import Dictogram
 import hashtable
-import queue
+from queue import Queue
 
 class Nth_Order_Markov():
-    def __init__(self, words_list=None):
+    def __init__(self, words_list=None, nth_order=2):
         """Construct a Markov Chain model.
            Param: words_list(list of str)"""
         self.corpus = words_list
-        self.chain = self.populate_chain()
+        self.transition = Queue(maxsize=nth_order+2)
+        self.chain = self.populate_chain(nth_order)
 
-    def populate_chain(self):
+    def populate_chain(self, nth_order):
         self.chain = Dictogram()
-        for i in range(len(self.corpus)-3):
-            cur = self.corpus[i], self.corpus[i+1]
-            nxt = self.corpus[i+1], self.corpus[i+2]
+        for i in range(len(self.corpus)-nth_order):
+            # print(i)
+            while not self.transition.empty():
+                self.transition.get()
+            for j in range(nth_order+1):
+                self.transition.put(self.corpus[i+j])
+            # print(self.transition.queue)
+            cur = self.transition.get(), self.transition.queue[0]
+            nxt = self.transition.get(), self.transition.get()
+
+            # print(cur, "\n", nxt)
             if self.chain.get(cur, None) is None:
+                # print("\n--Adding NEW--")
                 self.chain[cur] = Dictogram([nxt])
             else:
+                # print("\n--Adding to Count--")
                 self.chain[cur].add_count(nxt)
+            # print(self.chain)
         return self.chain
-
-
 
 if __name__ == "__main__":
     word_list = get_clean_words("text_files/second_markov.txt")
     print("\t--word_list--\n", word_list)
 
-    markov = Nth_Order_Markov(word_list)
-    print("\n\t--second/Nth_order_markov--Populated--\n", markov.chain)
+    markov = Nth_Order_Markov(word_list, nth_order=2)
+    print("\n\t--Nth_order_markov--2ND--\n", markov.chain)
 
-
-
-""" Working Model for 2nd Gen
-
-    def populate_chain(self):
-        self.chain = Dictogram()
-        for i in range(len(self.corpus)-3):
-            cur = self.corpus[i], self.corpus[i+1]
-            nxt = self.corpus[i+1], self.corpus[i+2]
-            if self.chain.get(cur, None) is None:
-                self.chain[cur] = Dictogram([nxt])
-            else:
-                self.chain[cur].add_count(nxt)
-        return self.chain
-"""
+    # markov = Nth_Order_Markov(word_list, nth_order=3)
+    # print("\n\t--Nth_order_markov--3rd--\n", markov.chain)
