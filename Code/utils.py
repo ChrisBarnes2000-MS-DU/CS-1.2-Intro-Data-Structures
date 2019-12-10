@@ -1,4 +1,5 @@
 import time
+from re import sub
 
 def time_it(func):
     # Made wth love by Ben <3 - DS2.3
@@ -46,10 +47,15 @@ def get_clean_words(file_name):
 
 
 def repClean(file_name):
+    pattern = r"(^\.\.\.[.!?])"
+    repl = " [STOP]\n"
+    # repl = "$& ----"
     with open(file_name, "r") as file:
         # make a list ofd words, contains non alphabetic chars
-        words = file.read().split()
+        corpus = file.read()   #.split()
+        words = sub(pattern, repl, corpus)
         print(words)
+
 
 if __name__ == "__main__":
     # word_list = get_clean_words("text_files/markov.txt")
@@ -58,5 +64,6 @@ if __name__ == "__main__":
     # word_list = get_clean_words("text_files/zombie.txt")
     # word_list = get_clean_words("text_files/corpus.txt")
     # print("\t--word_list--\n", word_list)
+    repClean("text_files/fish.txt")
     # repClean("text_files/zombie.txt")
-    repClean("text_files/AI_application_technology.txt")
+    # repClean("text_files/AI_application_technology.txt")
