@@ -3,7 +3,7 @@ import os
 import dotenv
 dotenv.load_dotenv('.env')
 
-DIFFBOT_API_URL = os.environ.get('DIFFBOT_API_URL')
+DIFFBOT_API_URL = "http:\\api.diffbot.com\v3\article"
 DIFFBOT_DEV_TOKEN = os.environ.get('DIFFBOT_DEV_TOKEN')
 
 def get_article(article_url):
