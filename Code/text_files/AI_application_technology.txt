@@ -1,0 +1,133 @@
+To invoke an African proverb, smooth seas do not make skillful sailors. In today’s turbulent world of rapid digital transformation, we wanted to discover who is best at navigating—and what experience they can pass along. Among respondents to our State of AI in the Enterprise, 2nd Edition survey, we uncovered a group of “seasoned” adopters in the technology, media & entertainment, and telecommunications (TMT) industry possessing both significant artificial intelligence (AI) expertise and a comparatively large number of production deployments. Our analysis uncovered four key insights from the more experienced adopters:
+
+In the face of competitive pressure, they have made AI critical to their business strategy. This group of companies sees AI as key to their success but has a measured view of the transformational impact to their business and industry. They are investing in AI more heavily than others and accelerating their spending at a higher rate, seeing a strong return on investment.
+
+They are employing more mature practices to a higher degree. The more experienced organizations we surveyed are using a wide range of practices to ensure the success of their AI efforts. They are more likely to have a companywide AI strategy, put a stronger focus on training, recruit both technical and nontechnical talent, show a strong capability to experiment, and consume AI through multiple means—for example, enterprise software, open-source tools, and AI-as-a-service.
+
+Despite early success, they face challenges. Experienced organizations say they’re grappling with issues relating to implementation, data, and managing costs. They are less worried about cybersecurity issues, possibly because they are more likely to integrate cybersecurity planning into their AI initiatives.
+
+They recognize the potential transformative impact of AI on their workforce. More of the experienced organizations feel that AI is already shifting job roles and skills in their company, and they are addressing the changes. The vast majority feel that AI will improve decision-making, enhance job performance and satisfaction, and produce a more synergetic relationship between humans and technology.
+
+As both producers and consumers of AI technologies, TMT companies are considering many uses for AI—both for themselves and for their customers. As AI use cases continue to expand, getting the execution right from a technology and organizational standpoint becomes ever more critical. The organizations with more experience can offer those just starting out a clear path to help swiftly advance their AI efforts.
+
+Introduction: A new journey
+
+Instead of asking themselves “Should we pursue AI?” many companies are now asking themselves “How should we pursue AI?” Enthusiasm and use are both increasing as organizations look to unlock the value that AI implementations can potentially provide.
+
+Investment is following enthusiasm, and the global AI industry has received over US$24 billion in investments over the past three years.1 Additionally, technology giants acquired 115 AI-focused startups in 2017, 44 percent more than in 2016.2 The investment fervor isn’t limited to acquisitions: Organizations are looking to improve their own research and development capabilities as well. Recently, Samsung announced that it would open research centers around the world to help drive its AI adoption. This includes building a team of 1,000 AI engineers and researchers by 2020.3
+
+Amid this wave, we wanted to understand how AI technologies are beginning to transform early-adopter companies. We surveyed 266 TMT executives in the United States to understand how they are using AI technologies and how their businesses are being impacted (see sidebar, “Methodology”). We wanted to understand how AI adoption and investment are changing for companies, what kinds of benefits they are seeing, and which practices experienced organizations are using to succeed.
+
+Methodology
+
+To obtain a view of how organizations are adopting and benefiting from AI technologies, in Q3 2018 Deloitte surveyed 1,100 IT and line-of-business executives from US-based companies that are prototyping or implementing AI solutions. This report examines the subset of 266 respondents who represent TMT companies.
+
+All respondents were required to be knowledgeable about their company’s use of AI technologies, and 89 percent have direct involvement with their company’s AI strategy, spending, implementation, and/or decision-making. Fifty-two percent are IT executives, with the rest being line-of-business executives. Sixty-four percent are C-level executives—including CEOs, presidents, and owners (32 percent), along with CIOs and CTOs (26 percent)—and 36 percent are executives below the C-level.
+
+View from the bridge
+
+The TMT organizations we surveyed are all prototyping or implementing AI solutions. There are signs of increasing AI maturity within these companies. In Deloitte’s 2017 Cognitive technologies survey,4 18 percent of respondents reported their organization had undertaken 11 or more AI production deployments. One year later, that group has more than doubled, to 37 percent. In addition, the portion that says their company has high expertise in building AI solutions has grown from 42 to 47 percent.
+
+In this edition, we wanted to take our analysis a step further and look at the most experienced AI adopters—those companies that have built multiple AI systems and show a high level of maturity in selecting appropriate technologies, identifying use cases, building and integrating AI solutions, and staffing. Are they seeing better payoffs from their AI initiatives? Are they approaching their AI efforts differently? To uncover what’s happening at the “leading edge of the leading edge,” we grouped organizations into three segments, based on the number of AI production deployments undertaken and how respondents rated their enterprise’s expertise across the various measures (see figure 1):
+
+Seasoned (30 percent) are at the leading edge of AI adoption maturity. They have undertaken a high number of AI production deployments and have developed a high level of AI expertise across the board, in selecting AI technologies and suppliers, identifying use cases, building and managing AI solutions, integrating AI into their IT environment and business processes, and hiring and managing AI technical staff.
+
+Skilled (41 percent) have generally launched multiple AI production systems but are not yet as mature as the Seasoned. They lag on their number of AI implementations, their level of AI expertise, or both.
+
+Starters (29 percent) are dipping their toes into AI adoption and have not yet developed solid proficiency in building, integrating, and managing AI solutions.
+
+Seasoned companies overwhelmingly regard AI adoption as “very important” or “critically important” to their business success: A remarkable 94 percent of executives at Seasoned companies believe this, versus 82 percent of the Skilled and 52 percent of the Starters. The Seasoned are acting on that belief. They are full speed ahead with AI investment and activity, achieving measurable value from their AI efforts. They’re combining a companywide vision for AI with a flair for experimentation and a set of structured practices to achieve their vision (see figure 2).5
+
+Plotting a course to value
+
+There are many paths to value offered by AI technologies, including short-term efforts to drive efficiency and others for longer-term transformation.7 Indeed, our three groups of TMT companies have differing views on how quickly their AI-powered transformations may take place. The less-experienced Starters and Skilled tend to be more optimistic about the pace, while the Seasoned adopters have more tempered expectations. Sixty-five percent of the Starters and 59 percent of the Skilled believe that transformation of their organization will happen within three years; only 45 percent of the Seasoned agree. In fact, over half of the Seasoned firms (51 percent) believe their business transformation will take four years or longer. The Skilled and Starters may have grand ambitions—or the Seasoned may be more wary and realistic. Nonetheless, the fact that the Seasoned are revving up their investments and AI implementations indicates that they plan to stick with their AI initiatives for the long haul.
+
+Since Seasoned adopters view AI as a strategic imperative, it’s unsurprising that they are investing in AI more heavily than others and accelerating their spending at a higher rate (see figure 3). Roughly half of Seasoned firms (49 percent) invested more than US$5 million in AI in the most recent fiscal year (versus 42 percent of the Skilled and 28 percent of the Starters). The Seasoned are also expanding their investment. Notably, 35 percent of the Seasoned adopters say they’ll boost their AI investment by more than 20 percent in the coming fiscal year.
+
+Why are the most mature AI adopters investing so aggressively? Part of the answer likely lies in competitive pressure. Forty-four percent of the Seasoned companies say they’re using AI to catch up to, or stay on par with, their competitors, while the other groups are less likely to say they’re playing catch-up. It’s likely that the most mature adopters are facing more intense competition from rivals who are also more advanced AI adopters. They may regard pursuing AI as an imperative just to stay in the game. At the same time, 44 percent of Seasoned firms report that AI is helping them widen a lead or leapfrog their competition. This bifurcation illustrates the strong drive of the Seasoned to take advantage of AI technologies either for survival or as a way to differentiate, not simply for incremental improvement.
+
+“Competitive advantage with AI is no longer coming from just process efficiency gains, but from using it to improve the customer experience—identifying preferences, designing unique content, and targeting it to the right people.”
+
+The accelerating investment in AI may also be driven by the strong return many are seeing from their investments to date. We found that TMT companies, compared with other industries, are spending significantly on AI technologies—and getting the highest return (see figure 4). Strikingly, every one of the Seasoned adopters reports a positive return on AI investments, with a majority of them (54 percent) achieving ROI above 20 percent. They are truly leaders among the AI vanguard. The positive financial returns can help justify and drive future investment in new projects or help with training and reskilling efforts.
+
+The Seasoned firms are also serious about tracking metrics for their AI initiatives: About six in 10 are measuring and tracking their ROI as well as cost-savings targets, customer-related targets, and revenue targets, and half are tracking metrics for productivity targets. While the more mature adopters are approaching metrics more diligently than others, there’s still room for improvement.
+
+Watching for hazards
+
+These benefits and financial returns do not come without some potential challenges. Organizations are grappling with operational hurdles as they strive to create business value with their AI initiatives (see figure 5). For the more mature Seasoned and Skilled, the top obstacles include implementation and integration issues and difficulties around data. It’s unsurprising that implementation and integration rise to the top, since building and incorporating any emerging technology can be a complicated endeavor.
+
+The challenge of integrating AI into a business may be amplified by worker fears and resistance to the changes the technologies bring to their roles. Truly integrating AI requires a shift—from the longstanding tradition of humans telling machines what to do, to humans and AI working together, or even to systems telling humans what to do. Mastering this transition can be crucial, especially considering that it’s sometimes difficult to understand how AI systems make decisions.
+
+Respondents report they are also dealing with data-related difficulties. Accurate, high-quality, curated data is the fuel that powers AI systems.8 Potential data struggles for organizations include locating and accessing the right internal and external data sources, cleaning and aggregating data that may come from disparate systems, and ensuring that it’s free of bias.9 Protecting the security and privacy of that data presents another critical challenge.
+
+Like the other groups, the Starters cite implementation as a top challenge. However, they identify some unique difficulties, including skill shortages and trouble identifying the right AI use cases. Since they are earlier on the maturity curve, they may feel pressure to use AI technologies to ensure competitive relevance, while not yet knowing which application areas will be most beneficial.
+
+Companies are also working to manage the broader concerns that they have for AI technologies (see figure 6). While cybersecurity vulnerability is the top concern for the AI adopters overall, the Seasoned seem to have their worries under control (see sidebar, “Managing cybersecurity risk with AI”). Their top anxieties are more operational and reflect their maturity using the technologies. They are most worried about trusting the recommendations of their AI systems—fearing that they may take incorrect actions or cause a life-threatening error. This underscores the need to devote more time and attention to training humans and AI to work in concert, building on each other’s unique capabilities.
+
+Ethical concerns around AI make regular headlines, but early adopters rank them as the least of their worries, focusing more on practical and immediate issues. They may believe that they have ethical risks under control, or they may be relying on larger organizations to lead the way on these issues. For example, SAP has set up an advisory panel drawn from government, industry, and academia to help drive a set of principles for the company’s AI work.10
+
+In general, organizations seem to be cognizant of these potential risks—50 percent have either major or extreme concerns about the potential risks associated with their AI initiatives. At the same time, 86 percent of respondents feel their organizations are somewhat or fully prepared for these risks—a figure so high as to suggest that organizations may not fully appreciate all the potential risks. It is vital that organizations think through all the things that could potentially derail their AI efforts and adequately plan and prepare for them.
+
+While Seasoned adopters are heavy AI experimenters, they’re generally guided by a strong organizational strategy: 58 percent say they have a comprehensive, detailed, companywide strategy in place for AI adoption—compared with just 33 percent of Skilled and 23 percent of Starters. For these less-mature groups, strategies tend to exist at the departmental level. In a Forbes Insights executive survey, respondents cited a strategic vision for AI as the single most important contributor to successfully integrating the technology.14
+
+Seasoned adopters are also undertaking a variety of activities that indicate their organizations’ emerging strategic vision for AI. This includes developing a companywide process for how AI prototypes are moved into full production and appointing senior executives to work as AI champions (see figure 7). However, with at most six in 10 Seasoned companies reporting these activities, there’s still development needed.
+
+“When you are trying to build data products, it isn’t helpful to simply sit around a table and come up with magical ideas in abstract. You need to build prototypes—they may be crude at first, but they will enable others to get a feel for what’s being discussed, understand what is possible, and thus build a level of trust.”
+
+—Siddharth Patil, head of data science, listeners, Pandora
+
+A constellation of options
+
+Adoption of AI technology is increasing because it’s becoming easier to build and deploy AI applications. AI-as-a-service is getting better and cheaper, with more plentiful and capable tools for developers. Companies can now experiment with AI capabilities and deploy solutions widely, with low up-front costs, less need for specialized talent, and minimal risk. One example comes from Microsoft, which recently acquired the startup Lobe, with the goal of making deep learning simpler and more accessible, without coding.15
+
+Tapping into AI-as-a-service is a key way that the Seasoned and Skilled fuel experimentation (see figure 8). Companies can access advanced AI hardware and software services through the cloud, reducing the need to build in-house infrastructure and develop software from scratch. According to a recent Deloitte study, companies are 2.6 times more likely to prefer acquiring advanced innovation capabilities such as AI through cloud-based services versus on-premise solutions, and three times more likely to prefer as-a-service to building these capabilities themselves.16
+
+Major cloud providers all now offer a variety of AI capabilities as services, including data preparation, speech-to-text, text-to-speech, natural language understanding, and image analysis.17 There are services for building chatbots and conversational interfaces, and for developing and training machine learning models, without having to learn complex algorithms. Cloud-based deep learning services can provide access to specialized processors on-demand for handling the extremely heavy computational requirements.18 Service-based solutions give enterprises rapid access to the newest advanced technologies. Indeed, the snowballing popularity of AI-as-a-service is evidenced by its annual global growth rate, estimated at a remarkable 48 percent.19
+
+The most prominent way Seasoned firms access AI is also the easiest: using enterprise software that embeds intelligent capabilities. These systems are often cloud-based and specialized for business functions such as CRM, ERP, or HR. For example, Salesforce Einstein applies machine learning to historic sales data and predicts which prospects are most likely to close.20 These systems can be used off the shelf by employees who aren’t necessarily AI experts, and they’re regularly updated with technology advancements.
+
+Even when companies have a need to build custom solutions, there are tools available to help accelerate development. For example, developing and deploying a machine learning model typically takes weeks or months of labor by a skilled data scientist. However, automated machine learning enables “ordinary” developers to create solutions in a few days. Seasoned adopters are more likely than others to use automated machine learning, now available via both commercial and open-source tools.21
+
+“AI that builds AI is now a reality, with tools that can automatically and rapidly build deep learning neural networks—achieving in a matter of hours what it takes a trained data scientist weeks or months to build.”
+
+—Ruchir Puri, IBM fellow, CTO, and chief architect for Watson, IBM
+
+Inadequate talent and skills often hinder AI adoption. It’s clear that the Seasoned, with their greater overall maturity, have had some success in developing an AI-savvy staff. Despite this, the Seasoned are still twice as likely as the other segments to report a severe AI skills gap. Nearly half of the Seasoned report a major or extreme skills gap in meeting the needs of their AI initiatives, compared with only a quarter of the Skilled and Starters. It appears that the more AI projects the Seasoned undertake, the more acutely they feel the need for AI-related skills.
+
+Companies need a broad range of skills to implement their AI initiatives, and groups at different points in their journey need different kinds of skills (see figure 9).22 The No. 1 role that Seasoned adopters seek is software developers. This is followed closely by a need for business leaders who can interpret AI results and take actions based on them, and by change management experts who can implement strategies to help people adapt to the organizational changes that AI is bringing. This suggests that Seasoned adopters are turning their attention to integrating AI solutions fully into their business.
+
+The Skilled group is still focused on the technical aspects of AI, looking most for software developers and project managers. And the Starters are seeking AI researchers to invent new kinds of AI algorithms and systems. Less mature adopters may feel as though they need to build every AI project from the ground up using AI specialists. However, they could do well to look at AI-enabled enterprise software that they can deploy out of the box, as well as cloud-based AI services, both of which could allow them to do more with their current workforce.
+
+There is little doubt that AI is already causing significant workforce changes in AI-savvy companies, and that these changes are likely to sweep through more companies as AI adoption grows. Six in 10 of the Seasoned report that AI has already substantially changed job roles and skills at their companies, while just four in 10 Skilled and two in 10 Starters say the same. Despite the potential disruption, the majority believe that AI technologies will have a positive effect on employees and newly added talent.23 Seasoned executives in particular are overwhelmingly optimistic: 92 percent agree that AI empowers their employees to make better decisions, 96 percent believe AI will enhance employee job performance and satisfaction, and 90 percent say that human workers and AI will augment each other, encouraging new ways of working.
+
+“Our approach to data and analytics is fundamentally changing the function of an analyst. They can now spend more time with business leaders to provide meaningful insight. It is also a more exciting job now—it is not just about sifting through data. Analysts can facilitate conversations that weren’t possible before.”
+
+A recent Deloitte human capital trends report notes that, despite increasing clarity around the skills needed in a world where humans work side by side with machines, roughly half of respondents have no plan in place to cultivate these skills.24 There are some strong indications that the TMT AI adopters are approaching workforce training seriously and taking action (see figure 10). Seven in 10 of the Seasoned organizations are training their developers to create new AI solutions, and also training IT staff to deploy those solutions. The Seasoned organizations are aggressively educating their nontechnical workforce as well—two-thirds are training employees to take on alternative roles within the company, and nearly two-thirds are showing employees how to use AI in their jobs.
+
+Conclusion: All hands on deck
+
+As access to AI technologies becomes easier, with a lower barrier to entry, simply having it won't confer a competitive advantage. It will likely become even more of a competitive imperative to get execution and integration right. Many organizations are just starting on their AI journey while others are further along. All, though, are wrestling with similar questions. Should we build, buy, or partner to create AI solutions, and what is the right balance? Should we focus on improving what we already have—or on broader and potentially more transformational initiatives? How will we manage our skills and training needs? Will our business be able to evolve as AI technologies mature?
+
+Because TMT companies tend to be more technology-savvy, invest more in AI, and are building more AI-infused products, they have an opportunity to separate themselves from the pack. However, they also have the potential to make costly missteps. To provide guidance and identify leading practices, we’ve investigated how experienced TMT organizations are approaching AI. We’ve learned that Seasoned adopters:
+
+Recognize that AI is increasingly critical to their business strategy;
+
+Have a more pragmatic view of how fast AI will transform their organization;
+
+Invest more and are accelerating their investment;
+
+Employ a strong organization-wide AI strategy and excel at transitioning prototypes to full production systems;
+
+Use AI technologies at a higher rate;
+
+Experience difficulties with implementation and integration;
+
+Struggle with skills gaps and seek business leaders proficient in interpreting AI outputs; and
+
+Have confidence in the positive effect of AI on employees and are proactive about training their workforce.
+
+Even from their leading position, there are things the Seasoned should consider doing as they evolve their AI efforts. Moreover, less experienced organizations that are not as far along with their AI initiatives can likely learn from the practices of the leading group.
+
+AI adopters should consider whether to get broader and more creative with the AI use cases they choose to tackle. Today, organizations are using AI for areas ranging from IT optimization and driving automation and efficiency, to quality control and improving customer service, to creating new products and pursuing new markets.
+
+What promises to be a broad, AI-enabled transformation of businesses and industries is in early stages and will take some time. Though it’s easy to get caught up in the hype and worry about missing out, AI adopters will likely benefit by taking a longer-term view of both technology and talent. It is essential to not only plan for short-term goals but have a well-defined strategy for the longer term. Organizations should seek a balance between employing easier off-the-shelf AI solutions and building up an internal AI development capacity that could lead to more transformative results over time.

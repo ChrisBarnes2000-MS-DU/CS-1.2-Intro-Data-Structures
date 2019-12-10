@@ -1,4 +1,36 @@
 import time
+import requests
+
+DIFFBOT_API_URL = 'http://api.diffbot.com/v3/article'
+DIFFBOT_DEV_TOKEN = 'your_diffbot_dev_token'
+
+def get_article(article_url):
+    # set request params for API request
+    params = {'token': DIFFBOT_DEV_TOKEN,
+              'url': article_url,
+              'discussion': 'false'}
+
+    res = requests.get(DIFFBOT_API_URL, params)  # hit the Diffbot API
+    res_obj = res.json()['objects'][0]          # parse the response object
+
+    return res_obj['text']                      # pull out the text
+
+
+if __name__ == '__main__':
+    import sys
+    urls_file = open(sys.argv[1])
+    output_file = open('corpus.txt', 'w')
+
+    corpus = ''
+
+    for line in urls_file:
+        url = line.strip()  # remove leading/trailing whitespace
+        article = get_article(url)
+        corpus += article
+
+    output_file.write(corpus)
+    print('Corpus saved to {}'.format(output_file.name))
+
 
 def time_it(func):
     # Made wth love by Ben <3 - DS2.3
@@ -12,34 +44,51 @@ def time_it(func):
     return wrapper
 
 def get_clean_words(file_name):
-        """Get a list of single-word strings from source text.
-            Param: file_name(str)
-            Return: words(list) """
-        words = []
-        with open(file_name, "r") as file:
-            # make a list ofd words, contains non alphabetic chars
-            words = file.read().split()
-            # remove all occurrences of non-alpha chars from data
-            clean_words = []
-            for word in words:
-                clean_word = ([char for char in word if not (
-                    char == "." or
-                    char == "?" or
-                    char == "!" or
-                    char == "," or
-                    char == ":" or
-                    char == ";" or
-                    char == "(" or
-                    char == ")" or
-                    char == "\""  # or
-                    # char == "'" or
-                    # char == "-"
-                )])
-                clean_words.append(clean_word)
-            # make a list of whole words only containing letters
-            clean_words_as_str = []
-            for list_of_chars in clean_words:
-                whole_word = ""
-                clean_words_as_str.append(whole_word.join(list_of_chars))
+    """Get a list of single-word strings from source text.
+        Param: file_name(str)
+        Return: words(list) """
+    words = []
+    with open(file_name, "r") as file:
+        # make a list ofd words, contains non alphabetic chars
+        words = file.read().split()
+        # remove all occurrences of non-alpha chars from data
+        clean_words = []
+        for word in words:
+            clean_word = ([char for char in word if not (
+                char == "." or
+                char == "?" or
+                char == "!" or
+                char == "," or
+                char == ":" or
+                char == ";" or
+                char == "(" or
+                char == ")" or
+                char == "\""  # or
+                # char == "'" or
+                # char == "-"
+            )])
+            clean_words.append(clean_word)
+        # make a list of whole words only containing letters
+        clean_words_as_str = []
+        for list_of_chars in clean_words:
+            whole_word = ""
+            clean_words_as_str.append(whole_word.join(list_of_chars))
 
-        return clean_words_as_str
+    return clean_words_as_str
+
+
+def repClean(file_name):
+    with open(file_name, "r") as file:
+        # make a list ofd words, contains non alphabetic chars
+        words = file.read().split()
+        print(words)
+
+if __name__ == "__main__":
+    # word_list = get_clean_words("text_files/markov.txt")
+    # word_list = get_clean_words("text_files/second_markov.txt")
+    # word_list = get_clean_words("text_files/fish.txt")
+    # word_list = get_clean_words("text_files/zombie.txt")
+    # word_list = get_clean_words("text_files/corpus.txt")
+    # print("\t--word_list--\n", word_list)
+    # repClean("text_files/zombie.txt")
+    repClean("text_files/AI_application_technology.txt")
