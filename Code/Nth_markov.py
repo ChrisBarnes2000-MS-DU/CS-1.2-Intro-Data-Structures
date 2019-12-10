@@ -1,7 +1,7 @@
 from utils import time_it, get_clean_words
 from dictogram import Dictogram
 from queue import Queue
-from random import sample, choice
+from random import sample, choice, randint
 import sys
 
 
@@ -60,12 +60,13 @@ class Nth_Order_Markov():
     def generate_sentence(self, num_words, nth_order):
         sentence = ""
         start = ""
+        pos = randint(0, len(self.corpus))
         for i in range(0, nth_order):
             if i >= 1:
                 start += " "
-            start += self.corpus[i]
+            start += self.corpus[pos+i]
         # print("\n--start_word--\t", start)
-        start = start.capitalize()
+        # start = start.capitalize()
         sentence += start
         word_pair = start
 
@@ -93,8 +94,8 @@ if __name__ == "__main__":
     # word_list = get_clean_words("text_files/markov.txt")
     # word_list = get_clean_words("text_files/second_markov.txt")
     # word_list = get_clean_words("text_files/fish.txt")
-    # word_list = get_clean_words("text_files/zombie.txt")
-    word_list = get_clean_words("text_files/corpus.txt")
+    word_list = get_clean_words("text_files/zombie.txt")
+    # word_list = get_clean_words("text_files/corpus.txt")
     # print("\t--word_list--\n", word_list)
 
     markov = Nth_Order_Markov(word_list, nth_order=Nth_order)
