@@ -1,4 +1,5 @@
 from utils import time_it, get_clean_words
+from tokenize import tokenize
 from dictogram import Dictogram
 from queue import Queue
 from random import sample, choice, randint
@@ -94,8 +95,10 @@ if __name__ == "__main__":
     # word_list = get_clean_words("text_files/markov.txt")
     # word_list = get_clean_words("text_files/second_markov.txt")
     # word_list = get_clean_words("text_files/fish.txt")
-    word_list = get_clean_words("text_files/zombie.txt")
+    # word_list = get_clean_words("text_files/zombie.txt")
     # word_list = get_clean_words("text_files/corpus.txt")
+    source = open("text_files/excerpt.txt").read()
+    word_list = tokenize(source)
     # print("\t--word_list--\n", word_list)
 
     markov = Nth_Order_Markov(word_list, nth_order=Nth_order)
