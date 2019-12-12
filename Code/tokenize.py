@@ -4,7 +4,12 @@ def tokenize(text):
     print("--Text--\n", text, "\n")
     no_punc_text = remove_punctuation(text)
     sentences = split_by_sentence(no_punc_text)
-    tokens = split_on_whitespace(sentences)
+    start = add_start(sentences)
+    end = add_stop(start)
+    propper = end
+    for line in propper:
+        print(line)
+    tokens = split_on_whitespace(propper)
     return tokens
 
 def remove_punctuation(text):
@@ -16,14 +21,17 @@ def remove_punctuation(text):
 def split_by_sentence(text):
     print("--Split by line--")
     sentences = re.split(r'\.(?:\s)+', text)
-    # lines = re.sub(r'\.', r'\n', text)
-    for i, sentence in enumerate(sentences):
-        sentences[i] = re.sub(r'^', "[START] ", sentence) + re.sub(r'$', " [STOP]", sentence)
-        print(sentences[i])
     return sentences
 
+def add_start(sentences):
+    for i, sentence in enumerate(sentences):
+        sentences[i] = re.sub(r'^', "[START] ", sentence)
+    return sentences
 
-
+def add_stop(sentences):
+    for i, sentence in enumerate(sentences):
+        sentences[i] = re.sub(r'$', " [STOP]", sentence)
+    return sentences
 
 def split_on_whitespace(sentences):
     tokens = []
