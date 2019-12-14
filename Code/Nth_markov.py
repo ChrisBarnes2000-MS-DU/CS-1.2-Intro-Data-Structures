@@ -1,5 +1,5 @@
 from utils import time_it, get_clean_words
-# from tokenize import tokenize
+# from clean_tokenizer import tokenize
 from dictogram import Dictogram
 from queue import Queue
 from random import sample, choice, randint
