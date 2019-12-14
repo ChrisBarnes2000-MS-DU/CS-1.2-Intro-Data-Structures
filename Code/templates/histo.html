@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Word list from file</h1>
+<h5>{{ word_list }}</h5>
+
+<h1>Histogram of word list</h1>
+<h5>{{ histogram }}</h5>
+
+<h1>Random Word</h1>
+<h5>{{ word }}</h5>
+
+<h1>Simple Sentence i.e jargon of {{ num_words }} random words</h1>
+<h5>{{ histogram_sentence }}</h5>
+{% endblock %}

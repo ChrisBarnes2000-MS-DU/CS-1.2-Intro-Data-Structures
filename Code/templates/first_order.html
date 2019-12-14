@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Word list from file</h1>
+<h5>{{ word_list }}</h5>
+
+<h1>Markov Dictionary</h1>
+{% for item, values in markov.items() %}
+    <h5>{{ item }} : {{ values }}</h5>
+{% endfor %}
+<hr>
+
+<h1>Markov Sentence</h1>
+<h5>{{ markov_sentence }}</h5>
+{% endblock %}
